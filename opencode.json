@@ -1,0 +1,15 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "akshare-one-mcp": {
+      "type": "local",
+      "command": ["uvx", "akshare-one-mcp"],
+      "enabled": true
+    },
+    "cn-a-stock": {
+      "type": "remote",
+      "url": "http://82.156.17.205/cnstock/mcp",
+      "enabled": true
+    }
+  }
+}
