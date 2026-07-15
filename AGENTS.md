@@ -77,6 +77,10 @@ templates/
   valuation-report.md    # 报告模板
 ```
 
+## 计算规则
+
+**永远不要自己心算或手算数据。** 所有数值计算（财务指标、估值模型、DCF 折现、敏感性分析、汇总统计等）必须先编写 Python 脚本完成，再引用脚本输出结果。本机已安装 Python 3，可直接通过 `python3 script.py` 执行。如遇 Python 环境异常或缺失依赖，应立即向用户报告，不得回退为手动计算。
+
 ## 研究报告要求
 
 - 使用 `templates/valuation-report.md` 作为起点
