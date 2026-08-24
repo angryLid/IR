@@ -1,0 +1,145 @@
+{
+  "series": [
+    {
+      "year": 2015,
+      "ebit_wan": 424301.91000000003,
+      "depr_wan": 1026047.02,
+      "other_da_wan": 36327.92,
+      "da_wan": 1062374.94,
+      "da_interpolated": false,
+      "ebitda_wan": 1486676.85,
+      "ebitda": 148.667685,
+      "ebitda_margin_pct": 9.076750400835252,
+      "roe_pct": 0.897910082972277
+    },
+    {
+      "year": 2016,
+      "ebit_wan": 1378122.8699999999,
+      "depr_wan": 1184823.63,
+      "other_da_wan": 47174.689999999995,
+      "da_wan": 1231998.3199999998,
+      "da_interpolated": false,
+      "ebitda_wan": 2610121.1899999995,
+      "ebitda": 261.012119,
+      "ebitda_margin_pct": 14.073871429720578,
+      "roe_pct": 7.393261309087407
+    },
+    {
+      "year": 2017,
+      "ebit_wan": 2829458.89,
+      "depr_wan": 1772187.33,
+      "other_da_wan": 63125.34,
+      "da_wan": 1835312.6700000002,
+      "da_interpolated": false,
+      "ebitda_wan": 4664771.5600000005,
+      "ebitda": 466.47715600000004,
+      "ebitda_margin_pct": 16.135891110294416,
+      "roe_pct": 11.6584843042656
+    },
+    {
+      "year": 2018,
+      "ebit_wan": 3254937.96,
+      "depr_wan": 1854932.32,
+      "other_da_wan": 62952.36,
+      "da_wan": 1917884.6800000002,
+      "da_interpolated": false,
+      "ebitda_wan": 5172822.640000001,
+      "ebitda": 517.2822639999999,
+      "ebitda_margin_pct": 16.97234648250869,
+      "roe_pct": 12.200074803286714
+    },
+    {
+      "year": 2019,
+      "ebit_wan": 1797503.11,
+      "depr_wan": 1850456.48,
+      "other_da_wan": 53602.31,
+      "da_wan": 1904058.79,
+      "da_interpolated": false,
+      "ebitda_wan": 3701561.9000000004,
+      "ebitda": 370.15619000000004,
+      "ebitda_margin_pct": 12.694232975943134,
+      "roe_pct": 6.977260866205301
+    },
+    {
+      "year": 2020,
+      "ebit_wan": 1841654.75,
+      "depr_wan": 1790239.35,
+      "other_da_wan": 54995.79,
+      "da_wan": 1845235.1400000001,
+      "da_interpolated": false,
+      "ebitda_wan": 3686889.89,
+      "ebitda": 368.688989,
+      "ebitda_margin_pct": 12.996906761902608,
+      "roe_pct": 6.875677909253253
+    },
+    {
+      "year": 2021,
+      "ebit_wan": 3435059.5,
+      "depr_wan": 1838972.78,
+      "other_da_wan": 58748.69,
+      "da_wan": 1897721.47,
+      "da_interpolated": false,
+      "ebitda_wan": 5332780.97,
+      "ebitda": 533.278097,
+      "ebitda_margin_pct": 14.636451882326268,
+      "roe_pct": 12.377074304284868
+    },
+    {
+      "year": 2022,
+      "ebit_wan": 1715040.93,
+      "depr_wan": 1844508.3433333333,
+      "other_da_wan": 67692.36,
+      "da_wan": 1912200.7033333334,
+      "da_interpolated": true,
+      "ebitda_wan": 3627241.6333333333,
+      "ebitda": 362.7241633333333,
+      "ebitda_margin_pct": 9.86257808418232,
+      "roe_pct": 6.2617760224238515
+    },
+    {
+      "year": 2023,
+      "ebit_wan": 1697712.5,
+      "depr_wan": 1850043.9066666667,
+      "other_da_wan": 66635.79999999999,
+      "da_wan": 1916679.7066666668,
+      "da_interpolated": true,
+      "ebitda_wan": 3614392.206666667,
+      "ebitda": 361.4392206666667,
+      "ebitda_margin_pct": 10.491691474819183,
+      "roe_pct": 5.962327878831865
+    },
+    {
+      "year": 2024,
+      "ebit_wan": 1128477.9,
+      "depr_wan": 1855579.47,
+      "other_da_wan": 74815.88,
+      "da_wan": 1930395.35,
+      "da_interpolated": false,
+      "ebitda_wan": 3058873.25,
+      "ebitda": 305.887325,
+      "ebitda_margin_pct": 9.49618992339054,
+      "roe_pct": 3.670897917406464
+    },
+    {
+      "year": 2025,
+      "ebit_wan": 1497495.19,
+      "depr_wan": 1823298.74,
+      "other_da_wan": 89046.83,
+      "da_wan": 1912345.57,
+      "da_interpolated": false,
+      "ebitda_wan": 3409840.76,
+      "ebitda": 340.98407599999996,
+      "ebitda_margin_pct": 10.739392306067295,
+      "roe_pct": 5.018119666184551
+    }
+  ],
+  "normalized_2022_2025": {
+    "ebitda": 342.75869624999996,
+    "ebit": 150.968163,
+    "da": 191.79053325,
+    "depr": 184.3357615,
+    "ebitda_margin_pct": 10.147462947114835,
+    "base_2015_2021_ebitda": 380.79464285714283,
+    "interpolation_note": "2022/2023固定资产折旧为邻年线性插补"
+  }
+}
