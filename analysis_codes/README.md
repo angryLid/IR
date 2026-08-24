@@ -10,7 +10,7 @@ analysis_codes/
   requirements.txt             # Python 依赖
   scrape_sina_financial.py     # 抓取：新浪三大报表 → 每页一张 CSV
   clean_financial_data.py      # 清洗：CSV → 结构化 JSON（含 meta/summary）
-  data/                        # 中间产物（CSV 默认不入库，JSON 建议入库）
+  data/                        # 数据落盘目录（入库追踪"相对原始"的 CSV，忽略派生的 JSON）
 ```
 
 ## 数据流
@@ -24,6 +24,8 @@ JSON（交付物，程序读取/人工校验用）
 ```
 
 - **CSV 与 JSON 数值等价**（JSON 由 CSV 确定性生成），人工校验看 JSON 即可。
+- **入库原则：只追踪"相对原始"的那一层**。这里 CSV 由网页原样抓取而来、JSON 由 CSV 确定性生成，
+  故**入库 CSV、忽略 JSON**（见根目录 `.gitignore`）。这样保留的是可重新合成的、最接近数据源的原始记录。
 - **单位：万元**（新浪页面口径，JSON 的 meta 中标注）。
 
 ## 用法

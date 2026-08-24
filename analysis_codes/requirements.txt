@@ -1,6 +1,8 @@
-# 数据清洗脚本依赖
-# 安装：pip3 install -r requirements.txt
+# 依赖（安装：uv pip install -r requirements.txt，或 pip3 install -r requirements.txt）
+# 数据清洗脚本
 pandas>=2.0
 lxml>=4.9
 beautifulsoup4>=4.12
 requests>=2.31
+# 期货行情数据管道
+akshare>=1.18.94
