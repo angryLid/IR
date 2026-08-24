@@ -3,3 +3,11 @@
 
 # DSH 本地状态（不入库）
 .dsh/
+
+# Python 虚拟环境与缓存
+.venv/
+__pycache__/
+*.pyc
+
+# 数据产物：仅存放更原始的 CSV，JSON 可由 CSV 即时生成，不入库
+analysis_codes/data/*.json

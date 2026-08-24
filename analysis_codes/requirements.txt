@@ -1,0 +1,6 @@
+# 数据清洗脚本依赖
+# 安装：pip3 install -r requirements.txt
+pandas>=2.0
+lxml>=4.9
+beautifulsoup4>=4.12
+requests>=2.31
