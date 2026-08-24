@@ -1,0 +1,146 @@
+{
+  "symbol": "600782",
+  "series": [
+    {
+      "year": 2015,
+      "ebit_wan": 39359.25,
+      "depr_wan": 125431.61,
+      "other_da_wan": 3065.72,
+      "da_wan": 128497.33,
+      "da_interpolated": false,
+      "ebitda_wan": 167856.58000000002,
+      "ebitda": 16.785658,
+      "ebitda_margin_pct": 6.616077017908344,
+      "roe_pct": 0.7473261134276262
+    },
+    {
+      "year": 2016,
+      "ebit_wan": 98508.62,
+      "depr_wan": 110092.96,
+      "other_da_wan": 2317.68,
+      "da_wan": 112410.64,
+      "da_interpolated": false,
+      "ebitda_wan": 210919.26,
+      "ebitda": 21.091926,
+      "ebitda_margin_pct": 6.9241260456412475,
+      "roe_pct": 5.8658983887971035
+    },
+    {
+      "year": 2017,
+      "ebit_wan": 441067.16000000003,
+      "depr_wan": 106946.67,
+      "other_da_wan": 2424.03,
+      "da_wan": 109370.7,
+      "da_interpolated": false,
+      "ebitda_wan": 550437.86,
+      "ebitda": 55.043786000000004,
+      "ebitda_margin_pct": 11.016024779996057,
+      "roe_pct": 23.29900535843338
+    },
+    {
+      "year": 2018,
+      "ebit_wan": 682196.63,
+      "depr_wan": 105982.77,
+      "other_da_wan": 2356.9,
+      "da_wan": 108339.67,
+      "da_interpolated": false,
+      "ebitda_wan": 790536.3,
+      "ebitda": 79.05363,
+      "ebitda_margin_pct": 13.877992887420747,
+      "roe_pct": 31.119567349706024
+    },
+    {
+      "year": 2019,
+      "ebit_wan": 421659.69,
+      "depr_wan": 93730.35,
+      "other_da_wan": 2113.9100000000003,
+      "da_wan": 95844.26000000001,
+      "da_interpolated": false,
+      "ebitda_wan": 517503.95,
+      "ebitda": 51.750395,
+      "ebitda_margin_pct": 8.93734027097985,
+      "roe_pct": 15.724209787164629
+    },
+    {
+      "year": 2020,
+      "ebit_wan": 345923.86000000004,
+      "depr_wan": 99026.95,
+      "other_da_wan": 2370.06,
+      "da_wan": 101397.01,
+      "da_interpolated": false,
+      "ebitda_wan": 447320.87000000005,
+      "ebitda": 44.73208700000001,
+      "ebitda_margin_pct": 6.177446740695911,
+      "roe_pct": 11.490950017237795
+    },
+    {
+      "year": 2021,
+      "ebit_wan": 533246.74,
+      "depr_wan": 101870.3,
+      "other_da_wan": 3097.0,
+      "da_wan": 104967.3,
+      "da_interpolated": false,
+      "ebitda_wan": 638214.04,
+      "ebitda": 63.821404,
+      "ebitda_margin_pct": 6.083278664619657,
+      "roe_pct": 16.15128558112378
+    },
+    {
+      "year": 2022,
+      "ebit_wan": 170957.46000000002,
+      "depr_wan": 111775.78,
+      "other_da_wan": 3072.66,
+      "da_wan": 114848.44,
+      "da_interpolated": false,
+      "ebitda_wan": 285805.9,
+      "ebitda": 28.58059,
+      "ebitda_margin_pct": 2.886889782216369,
+      "roe_pct": 3.9789465724311275
+    },
+    {
+      "year": 2023,
+      "ebit_wan": 52242.96,
+      "depr_wan": 107131.62,
+      "other_da_wan": 3171.6800000000003,
+      "da_wan": 110303.29999999999,
+      "da_interpolated": false,
+      "ebitda_wan": 162546.25999999998,
+      "ebitda": 16.254626,
+      "ebitda_margin_pct": 2.2847828768665743,
+      "roe_pct": 1.8734567765315875
+    },
+    {
+      "year": 2024,
+      "ebit_wan": 15922.970000000001,
+      "depr_wan": 105924.88,
+      "other_da_wan": 5293.58,
+      "da_wan": 111218.46,
+      "da_interpolated": false,
+      "ebitda_wan": 127141.43000000001,
+      "ebitda": 12.714143000000002,
+      "ebitda_margin_pct": 3.0414006448821156,
+      "roe_pct": 0.1254680863446195
+    },
+    {
+      "year": 2025,
+      "ebit_wan": 31286.06,
+      "depr_wan": 129534.45,
+      "other_da_wan": 5989.139999999999,
+      "da_wan": 135523.59,
+      "da_interpolated": false,
+      "ebitda_wan": 166809.65,
+      "ebitda": 16.680965,
+      "ebitda_margin_pct": 4.65831399046376,
+      "roe_pct": 0.17008944664360398
+    }
+  ],
+  "normalized_2022_2025": {
+    "ebitda": 18.557581,
+    "ebit": 6.76023625,
+    "da": 11.79734475,
+    "depr": 11.35916825,
+    "ebitda_margin_pct": 3.2178468236072044,
+    "base_2015_2021_ebitda": 47.46841228571429,
+    "interpolation_note": "2022/2023固定资产折旧为邻年线性插补（如适用）"
+  }
+}

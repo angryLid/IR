@@ -25,6 +25,7 @@ EBITDA 显著大于 EBIT（钢铁重资产折旧摊销高），因此必须补�
 
 EBITDA = EBIT + 折旧摊销（EBIT 沿用近似口径 = 营业利润 + 财务费用）
 """
+import argparse
 import csv
 import json
 import os
@@ -57,9 +58,9 @@ def to_number(s):
     return float(s) if s else None
 
 
-def read_cashflow_da(year):
+def read_cashflow_da(stockid, year):
     """读某年现金流表，返回 {key: 值}（万元），缺失项为 None。取 12-31 年报列。"""
-    path = os.path.join(FIN_DIR, f"600019_cashflow_{year}.csv")
+    path = os.path.join(FIN_DIR, f"{stockid}_cashflow_{year}.csv")
     if not os.path.exists(path):
         return None
     with open(path, encoding="utf-8-sig") as f:
@@ -75,12 +76,12 @@ def read_cashflow_da(year):
     return found
 
 
-def interpolate_depr():
+def interpolate_depr(stockid):
     """对固定资产折旧缺失年份做线性插补，返回 {year: (value, interpolated)}。"""
     # 收集各年固定资产折旧原始值
     raw = {}
     for y in YEARS:
-        d = read_cashflow_da(y)
+        d = read_cashflow_da(stockid, y)
         raw[y] = d.get(DEPR_KEY) if d else None
 
     result = {}
@@ -110,14 +111,21 @@ def interpolate_depr():
 
 
 def main():
-    with open(os.path.join(DERIVED_DIR, "annual_earnings_series.json"), encoding="utf-8") as f:
+    ap = argparse.ArgumentParser(description="逐年 EBITDA 序列 + 正常化 EBITDA")
+    ap.add_argument("--stockid", default="600019", help="股票代码，如 600782")
+    ap.add_argument("--name", default=None, help="公司名称（仅显示用），默认取 stockid")
+    args = ap.parse_args()
+    stockid = args.stockid
+    label = args.name or stockid
+
+    with open(os.path.join(DERIVED_DIR, f"annual_earnings_series_{stockid}.json"), encoding="utf-8") as f:
         rows = json.load(f)
 
     # 固定资产折旧（含插补）
-    depr = interpolate_depr()
+    depr = interpolate_depr(stockid)
 
     print("=" * 104)
-    print("逐步 EBITDA 序列 | EBIT + 折旧摊销（单位：亿元）")
+    print(f"逐步 EBITDA 序列 | EBIT + 折旧摊销（单位：亿元）| {stockid} {label}")
     print("=" * 104)
     print(f"{'年':<6}{'EBIT(亿)':>10}{'固定折旧(亿)':>13}{'其他摊销(亿)':>12}"
           f"{'DA合计(亿)':>11}{'EBITDA(亿)':>11}{'EBITDA利润率%':>13}")
@@ -128,7 +136,7 @@ def main():
         y = r["year"]
         if y not in YEARS:
             continue
-        d = read_cashflow_da(y) or {}
+        d = read_cashflow_da(stockid, y) or {}
         depr_val, interp = depr[y]
         # 其他摊销 = 无形资产 + 长期待摊
         other_da = sum(v for k, v in d.items()
@@ -174,14 +182,14 @@ def main():
     base_ebitda = st.mean([x["ebitda"] for x in cyc])
     print(f"\n  上周期基准(2015-2021) Normalized EBITDA = {base_ebitda:.1f} 亿（对照）")
 
-    with open(os.path.join(DERIVED_DIR, "ebitda_series.json"), "w", encoding="utf-8") as f:
-        json.dump({"series": out, "normalized_2022_2025": {
+    with open(os.path.join(DERIVED_DIR, f"ebitda_series_{stockid}.json"), "w", encoding="utf-8") as f:
+        json.dump({"symbol": stockid, "series": out, "normalized_2022_2025": {
             "ebitda": norm_ebitda, "ebit": norm_ebit, "da": norm_da,
             "depr": norm_depr, "ebitda_margin_pct": norm_margin,
             "base_2015_2021_ebitda": base_ebitda,
-            "interpolation_note": "2022/2023固定资产折旧为邻年线性插补",
+            "interpolation_note": "2022/2023固定资产折旧为邻年线性插补（如适用）",
         }}, f, ensure_ascii=False, indent=2)
-    print("\n[Saved] data/derived/ebitda_series.json")
+    print(f"\n[Saved] data/derived/ebitda_series_{stockid}.json")
 
 
 if __name__ == "__main__":

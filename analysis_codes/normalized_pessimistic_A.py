@@ -12,6 +12,7 @@
 单位：EPS(元/股)、ROE(%)、EBIT利润率(%)、EBIT(亿元)。
 仅供研究参考，不构成投资建议。
 """
+import argparse
 import json
 import os
 import statistics as st
@@ -29,8 +30,8 @@ METRICS = [
 ]
 
 
-def load():
-    with open(os.path.join(DERIVED_DIR, "annual_earnings_series.json"), encoding="utf-8") as f:
+def load(stockid):
+    with open(os.path.join(DERIVED_DIR, f"annual_earnings_series_{stockid}.json"), encoding="utf-8") as f:
         return json.load(f)
 
 
@@ -39,12 +40,19 @@ def mean(xs):
 
 
 def main():
-    rows = load()
+    ap = argparse.ArgumentParser(description="正常化盈利（周期框架 + 下一周期更弱）")
+    ap.add_argument("--stockid", default="600019", help="股票代码，如 600782")
+    ap.add_argument("--name", default=None, help="公司名称（仅显示用），默认取 stockid")
+    args = ap.parse_args()
+    stockid = args.stockid
+    label = args.name or stockid
+
+    rows = load(stockid)
     cyc = [r for r in rows if r["year"] in CYCLE]
     nxt = [r for r in rows if r["year"] in NEXT]
 
     print("=" * 92)
-    print("正常化盈利 | 周期框架 + 下一周期更弱（悲观=方法A）")
+    print(f"正常化盈利 | 周期框架 + 下一周期更弱（悲观=方法A）| {stockid} {label}")
     print("=" * 92)
     print(f"\n{'指标':<14}{'上周期基准2015-21':>18}{'下周期已发生22-25':>18}{'下移幅度δ':>12}")
     print(" " * 14 + "(波形完整·均值)" + " " * 2 + "(方法A·悲观主口径)")
@@ -73,12 +81,13 @@ def main():
         "next_cycle": {"label": "2022-2025", "years": NEXT},
         "assumption": "下一周期弱于上一周期（地产需求中枢不可逆下移）；悲观主口径=2022-2025均值",
         "normalized": {k: v for (k, _, _, _), v in zip(METRICS, results.values())},
-        "source": "data/derived/annual_earnings_series.json",
+        "source": f"data/derived/annual_earnings_series_{stockid}.json",
     }
     os.makedirs(DERIVED_DIR, exist_ok=True)
-    with open(os.path.join(DERIVED_DIR, "normalized_pessimistic_A.json"), "w", encoding="utf-8") as f:
+    out_path = os.path.join(DERIVED_DIR, f"normalized_pessimistic_A_{stockid}.json")
+    with open(out_path, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)
-    print("\n[Saved] data/derived/normalized_pessimistic_A.json")
+    print(f"\n[Saved] {out_path}")
 
 
 if __name__ == "__main__":

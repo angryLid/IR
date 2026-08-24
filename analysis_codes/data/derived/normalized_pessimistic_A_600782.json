@@ -1,0 +1,33 @@
+{
+  "method": "A",
+  "scenario": "pessimistic",
+  "upper_cycle": {
+    "label": "2015-2021",
+    "years": [
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021
+    ]
+  },
+  "next_cycle": {
+    "label": "2022-2025",
+    "years": [
+      2022,
+      2023,
+      2024,
+      2025
+    ]
+  },
+  "assumption": "下一周期弱于上一周期（地产需求中枢不可逆下移）；悲观主口径=2022-2025均值",
+  "normalized": {
+    "EPS(元)": 0.1275,
+    "ROE%": 1.5369902204877346,
+    "EBIT利润率%": 0.9289373585804505,
+    "EBIT(亿)": 6.76023625
+  },
+  "source": "data/derived/annual_earnings_series_600782.json"
+}

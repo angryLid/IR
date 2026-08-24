@@ -22,6 +22,8 @@ import os
 import re
 from collections import defaultdict
 
+import argparse
+
 DATA = os.path.join(os.path.dirname(__file__), "data")
 FIN_DIR = os.path.join(DATA, "financial")      # 三大报表 CSV 所在目录
 DERIVED_DIR = os.path.join(DATA, "derived")    # 衍生计算文件输出目录
@@ -57,9 +59,9 @@ def strip_prefix(name):
     return re.sub(r"^[一二三四五六七八九十]+、", "", name)
 
 
-def read_annual(stmt, year):
+def read_annual(stockid, stmt, year):
     """读某年 CSV，返回 {clean_name: annual_value(万元或元/股)}。取 12-31 年报列。"""
-    path = os.path.join(FIN_DIR, f"600019_{stmt}_{year}.csv")
+    path = os.path.join(FIN_DIR, f"{stockid}_{stmt}_{year}.csv")
     if not os.path.exists(path):
         return None
     with open(path, encoding="utf-8-sig") as f:
@@ -81,10 +83,17 @@ def read_annual(stmt, year):
 
 
 def main():
+    ap = argparse.ArgumentParser(description="周期识别（Step 1）")
+    ap.add_argument("--stockid", default="600019", help="股票代码，如 600782")
+    ap.add_argument("--name", default=None, help="公司名称（仅显示用），默认取 stockid")
+    args = ap.parse_args()
+    stockid = args.stockid
+    label = args.name or stockid
+
     rows = []
     for y in YEARS:
-        p = read_annual("profit", y)
-        b = read_annual("balance", y)
+        p = read_annual(stockid, "profit", y)
+        b = read_annual(stockid, "balance", y)
         if p is None:
             print(f"[SKIP] 无 {y} 利润表")
             continue
@@ -109,7 +118,7 @@ def main():
         })
 
     print("=" * 96)
-    print("600019 宝钢股份 | 逐年盈利序列（年报口径，2014-2025）")
+    print(f"{stockid} {label} | 逐年盈利序列（年报口径，2014-2025）")
     print("=" * 96)
     print(f"{'年':<5}{'营收(亿)':>10}{'归母净利(亿)':>13}{'EPS(元)':>9}"
           f"{'EBIT(亿)':>10}{'EBIT利润率%':>11}{'归母净资产(亿)':>14}{'ROE%':>8}")
@@ -126,9 +135,10 @@ def main():
 
     import json
     os.makedirs(DERIVED_DIR, exist_ok=True)
-    with open(os.path.join(DERIVED_DIR, "annual_earnings_series.json"), "w", encoding="utf-8") as f:
+    out_path = os.path.join(DERIVED_DIR, f"annual_earnings_series_{stockid}.json")
+    with open(out_path, "w", encoding="utf-8") as f:
         json.dump(rows, f, ensure_ascii=False, indent=2)
-    print("\n[Saved] data/derived/annual_earnings_series.json")
+    print(f"\n[Saved] {out_path}")
 
 
 if __name__ == "__main__":

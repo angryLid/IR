@@ -1,0 +1,58 @@
+{
+  "symbol": "600782",
+  "scenario": "pessimistic",
+  "normalized": {
+    "ebitda_yi": 18.557581,
+    "eps": 0.1275
+  },
+  "market": {
+    "total_shr_yi": 31.84,
+    "net_debt_yi": -13.74,
+    "current_price": 2.74,
+    "current_ev_yi": 73.50160000000001,
+    "implied_ev_ebitda": 3.96,
+    "implied_pe": 21.5
+  },
+  "route_ev_ebitda": [
+    {
+      "mult": 5.0,
+      "ev_yi": 92.787905,
+      "equity_yi": 106.52790499999999,
+      "price": 3.3457256595477385
+    },
+    {
+      "mult": 6.0,
+      "ev_yi": 111.345486,
+      "equity_yi": 125.08548599999999,
+      "price": 3.9285642587939695
+    },
+    {
+      "mult": 7.0,
+      "ev_yi": 129.903067,
+      "equity_yi": 143.643067,
+      "price": 4.511402858040201
+    }
+  ],
+  "route_pe": [
+    {
+      "mult": 8.0,
+      "price": 1.02
+    },
+    {
+      "mult": 10.0,
+      "price": 1.275
+    },
+    {
+      "mult": 12.0,
+      "price": 1.53
+    }
+  ],
+  "quality_discount_4x": [
+    {
+      "mult": 4.0,
+      "ev_yi": 74.230324,
+      "equity_yi": 87.97032399999999,
+      "price": 2.7628870603015074
+    }
+  ]
+}
