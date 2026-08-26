@@ -4,6 +4,9 @@
 # DSH 本地状态（不入库）
 .dsh/
 
+# PI 本地状态（不入库）
+.pi/
+
 # Python 虚拟环境与缓存
 .venv/
 __pycache__/
